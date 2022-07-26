@@ -1,0 +1,33 @@
+<div class="animate__animated animate__fadeIn">
+<h2>Buscar por región <small> {{ regionActiva }} </small></h2>
+<hr>
+
+<h5>Seleccione la región</h5>
+</div>
+<div class="animate__animated animate__flipInX">
+<div class="row">
+    <div class="col">
+        <button  *ngFor="let item of regiones"
+                [class]="getClassCSS( item )"
+                (click)="buscar( item )">
+                {{ item }}
+        </button>
+    </div>
+</div>
+</div>
+
+<div *ngIf="carga; else divPais"
+     class="alert alert-info mt-3">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+    <div *ngIf="paises.length > 0" 
+        class="row mt-3">
+       <div class="col">
+           <app-pais-tabla [paises]="paises"></app-pais-tabla>
+       </div>
+    </div>
+</ng-template>
+
+
